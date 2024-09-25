@@ -1,0 +1,131 @@
+// Variables de couleur
+$primary-color: #0056b3;
+$secondary-color: #ffffff;
+$background-color: #f8f9fa;
+$text-color: #333;
+$accent-color: #ff8c00;
+$box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin box-shadow {
+  box-shadow: $box-shadow;
+}
+
+// Global styles
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  color: $primary-color;
+}
+
+button {
+  background-color: $primary-color;
+  color: $secondary-color;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+// Container styles
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+// Form styles
+form {
+  background-color: $secondary-color;
+  padding: 20px;
+  border-radius: 10px;
+  @include box-shadow;
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+
+  button {
+    width: 100%;
+    background-color: $accent-color;
+  }
+}
+
+// Table styles
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+  th, td {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: $primary-color;
+    color: $secondary-color;
+  }
+
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+}
+
+// Card styles for EmployeeList
+.card {
+  background-color: $secondary-color;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  @include box-shadow;
+
+  .card-title {
+    font-size: 1.2rem;
+    color: $primary-color;
+    margin-bottom: 10px;
+  }
+
+  .card-content {
+    font-size: 1rem;
+    color: $text-color;
+  }
+}
