@@ -1,0 +1,27 @@
+@import './variables';
+
+.card {
+  background-color: $secondary-color;
+  border-radius: $border-radius;
+  padding: 20px;
+  box-shadow: $box-shadow;
+  transition: $transition;
+  margin-bottom: 20px;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 85, 255, 0.2);
+  }
+
+  .card-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: $primary-color;
+    margin-bottom: 10px;
+  }
+
+  .card-content {
+    font-size: 1rem;
+    color: $text-color;
+  }
+}

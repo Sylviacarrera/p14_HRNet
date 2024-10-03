@@ -1,0 +1,22 @@
+@import './variables';
+
+button {
+  background-color: $primary-color;
+  color: $secondary-color;
+  padding: 12px 25px;
+  border: none;
+  border-radius: $border-radius;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    box-shadow: 0 4px 10px rgba(0, 85, 255, 0.2);
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
+}

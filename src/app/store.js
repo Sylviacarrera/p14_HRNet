@@ -1,10 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-// Importe ici les slices que tu ajouteras plus tard
-import userReducer from '../features/user/userSlice';
+import userReducer from '../features/user/userSlice';  // Chemin à adapter si nécessaire
 
 export const store = configureStore({
   reducer: {
-    // Ajoute les reducers ici
-    user: userReducer,
+    user: userReducer,  // Gère l'état de l'utilisateur (employé)
   },
 });
