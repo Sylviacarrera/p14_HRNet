@@ -1,31 +1,36 @@
-import { useSelector, useDispatch } from 'react-redux';
-import TitleHeader from '../components/TitleHeader';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addEmployee, clearEmployee, showSuccessMessage } from '../features/user/userSlice';
 import EmployeeForm from '../components/EmployeeForm';
-import SuccessMessage from '../components/SuccessMessage';
-import { showSuccessMessage, hideSuccessMessage } from '../features/user/userSlice';
+import TitleHeader from '../components/TitleHeader';
 
 const CreateEmployee = () => {
   const dispatch = useDispatch();
-  const successMessage = useSelector((state) => state.user.successMessage);  // Accès à l'état Redux
+  const employee = useSelector((state) => state.user);
 
   const handleFormSubmit = () => {
-    console.log('Form is being submitted');
-    dispatch(showSuccessMessage());  // Dispatch de l'action
-    
-    // Cache le message de succès après 3 secondes
-    setTimeout(() => {
-      console.log('Hiding success message');
-      dispatch(hideSuccessMessage());
-    }, 3000);
+    // Ajouter l'employé à la liste
+    dispatch(addEmployee(employee));
+
+    // Récupérer les employés existants depuis le localStorage
+    const storedEmployees = JSON.parse(localStorage.getItem('employees')) || [];
+
+    // Ajouter le nouvel employé à la liste
+    const updatedEmployees = [...storedEmployees, employee];
+
+    // Mettre à jour le localStorage
+    localStorage.setItem('employees', JSON.stringify(updatedEmployees));
+
+    // Afficher un message de succès
+    dispatch(showSuccessMessage());
+
+    // Réinitialiser le formulaire
+    dispatch(clearEmployee());
   };
 
   return (
     <div className="container">
       <TitleHeader title="Create Employee" />
-      
-      {/* Affichage conditionnel du message de succès */}
-      {successMessage && <SuccessMessage message="Employé créé !" />}
-      
       <EmployeeForm onSubmit={handleFormSubmit} />
     </div>
   );

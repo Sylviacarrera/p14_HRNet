@@ -9,6 +9,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<CreateEmployee />} />
+        <Route path="/create-employee" element={<CreateEmployee />} /> 
         <Route path="/employee-list" element={<EmployeeList />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

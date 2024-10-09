@@ -1,4 +1,3 @@
-
 import { useDispatch, useSelector } from 'react-redux';
 import { setEmployeeField, clearEmployee } from '../features/user/userSlice';
 import InputField from './InputField';
@@ -18,10 +17,9 @@ const EmployeeForm = ({ onSubmit }) => {
   const handleSave = (event) => {
     event.preventDefault();
     if (onSubmit) {
-      onSubmit();  // Tu peux passer une fonction onSubmit via les props pour des actions spécifiques
+      onSubmit();  // Fonction pour gérer la soumission du formulaire
     }
-    alert('Employee saved successfully!');
-    dispatch(clearEmployee());
+    dispatch(clearEmployee());  // Réinitialise le formulaire après enregistrement
   };
 
   return (
