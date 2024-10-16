@@ -1,28 +1,24 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Modal from 'thra-basic-modal-react';
-import { hideSuccessMessage } from '../features/user/userSlice';
+import '../styles/SuccessMessage.scss'; 
 
-const SuccessMessage = () => {
-  const dispatch = useDispatch();
-  const visible = useSelector((state) => state.user.successMessage);
-
-  const handleCloseModal = () => {
-    dispatch(hideSuccessMessage());
+const ModalSuccessMessage = ({ isDisplayed, onClose, message }) => {
+  // Fonction pour fermer la modale
+  const handleOverlayClick = (e) => {
+    if (e.target.className.includes('modal-overlay')) {
+      onClose();
+    }
   };
 
   return (
-    <Modal
-      isDisplayed={visible}
-      onCloseModal={handleCloseModal}
-      content={
-        <div id="confirmation" className="modal">
-          <p>Employé créé avec succès !</p>
-          <p>Cliquez sur 'X' pour fermer cette modale.</p>
+    <div className={`modal-overlay ${isDisplayed ? 'show' : ''}`} onClick={handleOverlayClick}>
+      <div className="modal-content">
+        <div className="modal-header">
+          <span className="modal-close-icon" onClick={onClose}>✖</span> {/* Croix pour fermer */}
         </div>
-      }
-    />
+        <p className="modal-message">{message}</p>
+      </div>
+    </div>
   );
 };
 
-export default SuccessMessage;
+export default ModalSuccessMessage;

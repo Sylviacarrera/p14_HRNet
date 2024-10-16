@@ -46,12 +46,7 @@ const userSlice = createSlice({
     setEmployeeList: (state, action) => {
       state.employeeList = action.payload;
     },
-    showSuccessMessage: (state) => {
-      state.successMessage = true;
-    },
-    hideSuccessMessage: (state) => {
-      state.successMessage = false;
-    }
+    
   }
 });
 

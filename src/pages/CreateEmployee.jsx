@@ -1,28 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addEmployee, clearEmployee, showSuccessMessage } from '../features/user/userSlice';
+import { addEmployee, clearEmployee } from '../features/user/userSlice';
 import EmployeeForm from '../components/EmployeeForm';
+import ModalSuccessMessage from '../components/SuccessMessage';
 import TitleHeader from '../components/TitleHeader';
 
 const CreateEmployee = () => {
   const dispatch = useDispatch();
   const employee = useSelector((state) => state.user);
+  const [modalIsDisplayed, setModalIsDisplayed] = useState(false);
 
   const handleFormSubmit = () => {
-    // Ajouter l'employé à la liste
     dispatch(addEmployee(employee));
-
-    // Récupérer les employés existants depuis le localStorage
     const storedEmployees = JSON.parse(localStorage.getItem('employees')) || [];
-
-    // Ajouter le nouvel employé à la liste
     const updatedEmployees = [...storedEmployees, employee];
-
-    // Mettre à jour le localStorage
     localStorage.setItem('employees', JSON.stringify(updatedEmployees));
 
-    // Afficher un message de succès
-    dispatch(showSuccessMessage());
+    // Afficher le message de succès
+    setModalIsDisplayed(true);
 
     // Réinitialiser le formulaire
     dispatch(clearEmployee());
@@ -32,6 +27,13 @@ const CreateEmployee = () => {
     <div className="container">
       <TitleHeader title="Create Employee" />
       <EmployeeForm onSubmit={handleFormSubmit} />
+      
+      {/* Modale de succès */}
+      <ModalSuccessMessage
+    isDisplayed={modalIsDisplayed}
+    onClose={() => setModalIsDisplayed(false)}
+    message="Employé créé avec succès !"
+    />
     </div>
   );
 };

@@ -12,7 +12,6 @@ button {
   transition: $transition;
 
   &:hover {
-    background-color: darken($primary-color, 10%);
     box-shadow: 0 4px 10px rgba(0, 85, 255, 0.2);
   }
 
