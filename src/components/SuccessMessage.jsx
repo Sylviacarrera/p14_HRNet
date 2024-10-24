@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/SuccessMessage.scss'; 
+import { ModalSuccessMessage } from 'modal-success-message';
 
 const ModalSuccessMessage = ({ isDisplayed, onClose, message }) => {
   // Fonction pour fermer la modale

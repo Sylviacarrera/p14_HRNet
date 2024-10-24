@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addEmployee, clearEmployee } from '../features/user/userSlice';
 import EmployeeForm from '../components/EmployeeForm';
-import ModalSuccessMessage from '../components/SuccessMessage';
 import TitleHeader from '../components/TitleHeader';
+import { ModalSuccessMessage } from 'modal-success-message';
 
 const CreateEmployee = () => {
   const dispatch = useDispatch();

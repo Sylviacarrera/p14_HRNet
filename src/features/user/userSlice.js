@@ -10,7 +10,6 @@ const initialState = {
   state: '',
   zipCode: '',
   department: '',
-  successMessage: false,
   employeeList: [], // Liste des employés
   states: [
     { value: 'AL', label: 'Alabama' },
@@ -54,8 +53,7 @@ export const {
   setEmployeeField, 
   clearEmployee, 
   addEmployee, 
-  setEmployeeList, 
-  showSuccessMessage, 
+  setEmployeeList,
   hideSuccessMessage 
 } = userSlice.actions;
 
