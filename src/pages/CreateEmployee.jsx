@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addEmployee, clearEmployee } from '../features/user/userSlice';
 import EmployeeForm from '../components/EmployeeForm';
 import TitleHeader from '../components/TitleHeader';
-import { ModalSuccessMessage } from 'modal-success-message';
+import Modal from 'success-modal_react';
 
 const CreateEmployee = () => {
   const dispatch = useDispatch();
   const employee = useSelector((state) => state.user);
   const [modalIsDisplayed, setModalIsDisplayed] = useState(false);
+ 
 
   const handleFormSubmit = () => {
     dispatch(addEmployee(employee));
@@ -24,16 +25,21 @@ const CreateEmployee = () => {
   };
 
   return (
-    <div className="container">
+    <div className='container'>
       <TitleHeader title="Create Employee" />
       <EmployeeForm onSubmit={handleFormSubmit} />
-      
-      {/* Modale de succès */}
-      <ModalSuccessMessage
-    isDisplayed={modalIsDisplayed}
-    onClose={() => setModalIsDisplayed(false)}
-    message="Employé créé avec succès !"
-    />
+     
+        <Modal
+      onSubmit={handleFormSubmit}
+        isDisplayed={modalIsDisplayed}
+        onCloseModal={() => setModalIsDisplayed(false)}
+        content={
+          <div id="confirmation" className="modal">
+            <p className="modal-text">Employé créé avec succès !</p>
+            <p className="modal-subtext">Cliquez sur la croix pour fermer.</p>
+          </div>
+        }
+      />
     </div>
   );
 };

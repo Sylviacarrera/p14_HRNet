@@ -29,7 +29,7 @@ const EmployeeList = () => {
   );
 
   return (
-    <div>
+    <div className='employeeContainer'>
       <h1>Current Employees</h1>
       <div className="table-controls">
         <EntriesDropdown
